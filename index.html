@@ -738,6 +738,11 @@
         <div class="member-card__name">Steve Kehrig</div>
         <div class="member-card__role">Real Estate Advisor</div>
       </div>
+      <div class="member-card reveal">
+        <div class="member-card__avatar">JT</div>
+        <div class="member-card__name">Jeff Tyrrell</div>
+        <div class="member-card__role">Aquatics</div>
+      </div>
     </div>
   </div>
 </section>
@@ -864,6 +869,35 @@
     </div>
   </div>
 </footer>
+
+<!-- Mailing List Popup -->
+<div class="subscribe-popup" id="subscribe-popup" role="dialog" aria-modal="true" aria-label="Subscribe to mailing list">
+  <div class="subscribe-popup__backdrop"></div>
+  <div class="subscribe-popup__card">
+    <button class="subscribe-popup__close" aria-label="Close">&times;</button>
+    <div class="subscribe-popup__icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <h3 class="subscribe-popup__title">Stay in the Loop</h3>
+    <p class="subscribe-popup__desc">Join the Bulldog Dads mailing list for event updates, golf classic news, and community happenings.</p>
+    <form class="subscribe-popup__form" id="subscribe-form" action="https://sisdads.us18.list-manage.com/subscribe/post?u=a8eb6c9b540accc6eb2f17fc1&amp;id=6f0f396694" method="POST" target="_blank" novalidate>
+      <input type="hidden" name="u" value="a8eb6c9b540accc6eb2f17fc1">
+      <input type="hidden" name="id" value="6f0f396694">
+      <div style="position:absolute;left:-5000px" aria-hidden="true">
+        <input type="text" name="b_a8eb6c9b540accc6eb2f17fc1_6f0f396694" tabindex="-1" value="">
+      </div>
+      <div class="subscribe-popup__fields">
+        <div class="subscribe-popup__row">
+          <input type="text" name="FNAME" placeholder="First Name" class="subscribe-popup__input">
+          <input type="text" name="LNAME" placeholder="Last Name" class="subscribe-popup__input">
+        </div>
+        <input type="email" name="EMAIL" placeholder="Email Address *" required class="subscribe-popup__input">
+      </div>
+      <button type="submit" class="btn btn--primary subscribe-popup__btn">Subscribe</button>
+    </form>
+    <p class="subscribe-popup__fine">No spam, ever. Unsubscribe anytime.</p>
+  </div>
+</div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">

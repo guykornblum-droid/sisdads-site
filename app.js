@@ -168,6 +168,68 @@
 
   counters.forEach(el => counterObserver.observe(el));
 
+  // ===== MAILING LIST POPUP =====
+  const popup = document.getElementById('subscribe-popup');
+  const POPUP_DISMISS_KEY = 'sisdads_popup_dismissed';
+  const POPUP_DISMISS_DAYS = 7;
+  let popupShown = false;
+
+  function shouldShowPopup() {
+    const dismissed = localStorage.getItem(POPUP_DISMISS_KEY);
+    if (dismissed) {
+      const dismissedAt = parseInt(dismissed, 10);
+      const daysSince = (Date.now() - dismissedAt) / (1000 * 60 * 60 * 24);
+      if (daysSince < POPUP_DISMISS_DAYS) return false;
+    }
+    return true;
+  }
+
+  function showPopup() {
+    if (popupShown || !popup || !shouldShowPopup()) return;
+    popupShown = true;
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    if (!popup) return;
+    popup.classList.remove('active');
+    document.body.style.overflow = '';
+    localStorage.setItem(POPUP_DISMISS_KEY, Date.now().toString());
+  }
+
+  if (popup && shouldShowPopup()) {
+    // Show after 8 seconds
+    const popupTimer = setTimeout(showPopup, 8000);
+
+    // Or show on 40% scroll, whichever is first
+    const scrollTrigger = () => {
+      const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (scrollPct > 0.4) {
+        clearTimeout(popupTimer);
+        showPopup();
+        window.removeEventListener('scroll', scrollTrigger);
+      }
+    };
+    window.addEventListener('scroll', scrollTrigger);
+
+    // Close handlers
+    popup.querySelector('.subscribe-popup__close').addEventListener('click', closePopup);
+    popup.querySelector('.subscribe-popup__backdrop').addEventListener('click', closePopup);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
+    });
+
+    // On form submit, close popup and mark as dismissed
+    const form = document.getElementById('subscribe-form');
+    if (form) {
+      form.addEventListener('submit', () => {
+        localStorage.setItem(POPUP_DISMISS_KEY, Date.now().toString());
+        setTimeout(closePopup, 300);
+      });
+    }
+  }
+
   // ===== PHOTO GALLERY LIGHTBOX =====
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
