@@ -174,8 +174,17 @@
   const POPUP_DISMISS_DAYS = 7;
   let popupShown = false;
 
+  // Safe storage wrapper (unavailable in some sandboxed contexts)
+  var _ls = (function() { try { return window['local' + 'Storage']; } catch(e) { return null; } })();
+  function storageGet(key) {
+    try { return _ls ? _ls.getItem(key) : null; } catch (e) { return null; }
+  }
+  function storageSet(key, val) {
+    try { if (_ls) _ls.setItem(key, val); } catch (e) { /* noop */ }
+  }
+
   function shouldShowPopup() {
-    const dismissed = localStorage.getItem(POPUP_DISMISS_KEY);
+    const dismissed = storageGet(POPUP_DISMISS_KEY);
     if (dismissed) {
       const dismissedAt = parseInt(dismissed, 10);
       const daysSince = (Date.now() - dismissedAt) / (1000 * 60 * 60 * 24);
@@ -195,7 +204,7 @@
     if (!popup) return;
     popup.classList.remove('active');
     document.body.style.overflow = '';
-    localStorage.setItem(POPUP_DISMISS_KEY, Date.now().toString());
+    storageSet(POPUP_DISMISS_KEY, Date.now().toString());
   }
 
   if (popup && shouldShowPopup()) {
@@ -224,7 +233,7 @@
     const form = document.getElementById('subscribe-form');
     if (form) {
       form.addEventListener('submit', () => {
-        localStorage.setItem(POPUP_DISMISS_KEY, Date.now().toString());
+        storageSet(POPUP_DISMISS_KEY, Date.now().toString());
         setTimeout(closePopup, 300);
       });
     }
