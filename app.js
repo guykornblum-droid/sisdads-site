@@ -168,4 +168,81 @@
 
   counters.forEach(el => counterObserver.observe(el));
 
+  // ===== PHOTO GALLERY LIGHTBOX =====
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const galleryItems = document.querySelectorAll('.gallery__item');
+  let currentIndex = 0;
+  const galleryImages = [];
+
+  galleryItems.forEach((item, i) => {
+    const img = item.querySelector('img');
+    if (img) {
+      galleryImages.push({ src: img.src, alt: img.alt });
+      item.addEventListener('click', () => openLightbox(i));
+    }
+  });
+
+  function openLightbox(index) {
+    if (!lightbox || galleryImages.length === 0) return;
+    currentIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightboxImage() {
+    const img = galleryImages[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    updateLightboxImage();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateLightboxImage();
+  }
+
+  if (lightbox) {
+    lightbox.querySelector('.lightbox__close').addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    lightbox.querySelector('.lightbox__nav--prev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+
+    lightbox.querySelector('.lightbox__nav--next').addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
+
+    // Click backdrop to close
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+  }
+
 })();

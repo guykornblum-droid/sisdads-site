@@ -503,6 +503,44 @@
     </div>
   </div>
 
+  <!-- Photo Gallery -->
+  <div class="section">
+    <div class="container">
+      <div class="section__header reveal">
+        <div class="section__eyebrow">On the Course</div>
+        <h3 class="section__title">2025 Tournament Highlights</h3>
+        <p class="section__desc">A look back at the 2025 SIS Golf Classic at Blackhawk Country Club — Lakeside Course.</p>
+      </div>
+
+      <div class="gallery reveal">
+        <div class="gallery__item gallery__item--wide">
+          <img src="./assets/gallery/course-view.jpg" alt="Blackhawk Country Club Lakeside Course — fairway view with hills" loading="lazy" width="1200" height="1600">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-green-hats.jpg" alt="Foursome posing with golf cart in SIS green hats" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-recover-sponsor.jpg" alt="Foursome with Recover 180 sponsor hats and drinks on the tee" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-hills-backdrop.jpg" alt="Foursome on the fairway with Blackhawk hills in the background" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-bunkers.jpg" alt="Foursome posing with sand traps and rolling course behind them" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-tee-sponsor-sign.jpg" alt="Foursome at the tee with sponsor signage" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/foursome-putting-green.jpg" alt="Foursome on the putting green with putters" loading="lazy" width="1200" height="900">
+        </div>
+        <div class="gallery__item">
+          <img src="./assets/gallery/social-group.jpg" alt="Group of friends enjoying drinks after the round" loading="lazy" width="1200" height="900">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="cta-section">
     <div class="container reveal">
@@ -826,6 +864,15 @@
     </div>
   </div>
 </footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox__close" aria-label="Close">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo">&lsaquo;</button>
+  <button class="lightbox__nav lightbox__nav--next" aria-label="Next photo">&rsaquo;</button>
+  <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  <div class="lightbox__counter" id="lightbox-counter"></div>
+</div>
 
 <script src="./app.js" defer></script>
 </body>
