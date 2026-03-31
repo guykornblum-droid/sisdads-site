@@ -243,20 +243,35 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCounter = document.getElementById('lightbox-counter');
-  const galleryItems = document.querySelectorAll('.gallery__item');
   let currentIndex = 0;
-  const galleryImages = [];
+  let activeGalleryImages = [];
 
-  galleryItems.forEach((item, i) => {
-    const img = item.querySelector('img');
-    if (img) {
-      galleryImages.push({ src: img.src, alt: img.alt });
-      item.addEventListener('click', () => openLightbox(i));
-    }
+  // Collect images from ALL galleries
+  document.querySelectorAll('.gallery').forEach(gallery => {
+    const items = gallery.querySelectorAll('.gallery__item');
+    items.forEach(item => {
+      const img = item.querySelector('img');
+      if (img) {
+        item.addEventListener('click', () => {
+          // Build lightbox set from visible items in THIS gallery
+          activeGalleryImages = [];
+          const visibleItems = gallery.querySelectorAll('.gallery__item:not(.hidden)');
+          let clickedIdx = 0;
+          visibleItems.forEach((vi, idx) => {
+            const vImg = vi.querySelector('img');
+            if (vImg) {
+              activeGalleryImages.push({ src: vImg.src, alt: vImg.alt });
+              if (vi === item) clickedIdx = idx;
+            }
+          });
+          openLightbox(clickedIdx);
+        });
+      }
+    });
   });
 
   function openLightbox(index) {
-    if (!lightbox || galleryImages.length === 0) return;
+    if (!lightbox || activeGalleryImages.length === 0) return;
     currentIndex = index;
     updateLightboxImage();
     lightbox.classList.add('active');
@@ -270,19 +285,19 @@
   }
 
   function updateLightboxImage() {
-    const img = galleryImages[currentIndex];
+    const img = activeGalleryImages[currentIndex];
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
-    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + activeGalleryImages.length;
   }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
+    currentIndex = (currentIndex + 1) % activeGalleryImages.length;
     updateLightboxImage();
   }
 
   function prevImage() {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    currentIndex = (currentIndex - 1 + activeGalleryImages.length) % activeGalleryImages.length;
     updateLightboxImage();
   }
 
@@ -313,6 +328,31 @@
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowRight') nextImage();
       if (e.key === 'ArrowLeft') prevImage();
+    });
+  }
+
+  // ===== EVENT PHOTOS FILTER =====
+  const filterBtns = document.querySelectorAll('.gallery-filter');
+  const eventsGallery = document.getElementById('events-gallery');
+
+  if (filterBtns.length > 0 && eventsGallery) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active tab
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        const items = eventsGallery.querySelectorAll('.gallery__item');
+
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
     });
   }
 

@@ -43,18 +43,7 @@
 <header class="header" id="header">
   <div class="header__inner">
     <a href="#home" class="header__logo">
-      <!-- SVG Bulldog Logo -->
-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="SIS Bulldog Dads Logo">
-        <rect x="2" y="2" width="40" height="40" rx="8" stroke="currentColor" stroke-width="2" fill="none"/>
-        <path d="M12 16c0-2 1.5-4 4-4h12c2.5 0 4 2 4 4v2c0 1-0.5 2-1.5 2.5 1 0.5 2.5 2 2.5 4.5 0 3.5-3 6-7 6h-8c-4 0-7-2.5-7-6 0-2.5 1.5-4 2.5-4.5C12.5 20 12 19 12 18v-2z" fill="currentColor" opacity="0.12"/>
-        <circle cx="17.5" cy="19" r="2" fill="currentColor"/>
-        <circle cx="26.5" cy="19" r="2" fill="currentColor"/>
-        <ellipse cx="22" cy="24" rx="4" ry="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-        <line x1="22" y1="22" x2="22" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M18 26.5c0 1.5 1.8 3 4 3s4-1.5 4-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M11 14c-1-2 0-5 3-6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M33 14c1-2 0-5-3-6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      </svg>
+      <img src="./assets/bulldog-dads-logo-sm.png" alt="SIS Bulldog Dads Logo" class="header__logo-img" width="52" height="52">
       <div class="header__logo-text">
         SIS Bulldog Dads
         <span>Est. Danville, CA</span>
@@ -66,6 +55,7 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#golf-classic">Golf Classic</a></li>
         <li><a href="#events">Events</a></li>
+        <li><a href="#photos">Photos</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://sis-bulldog-dads-club.square.site/s/shop" target="_blank" rel="noopener noreferrer">Store</a></li>
@@ -87,6 +77,7 @@
     <a href="#home">Home</a>
     <a href="#golf-classic">Golf Classic</a>
     <a href="#events">Events</a>
+    <a href="#photos">Photos</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
     <a href="https://sis-bulldog-dads-club.square.site/s/shop" target="_blank" rel="noopener noreferrer">Store</a>
@@ -165,7 +156,7 @@
         <div class="event-card__body">
           <div class="event-card__date">May 30&ndash;31, 2026</div>
           <h3 class="event-card__title">4th Annual Dad/Kid Camping Trip</h3>
-          <p class="event-card__text">Overnight camping at Huddart Park in Woodside. Hiking, campfire, s'mores, and quality time with your kids among the redwoods. Sold out the last two years.</p>
+          <p class="event-card__text">Overnight camping at Huddart Park in Woodside. Hiking, campfire, s'mores, and quality time with your kids at Sequoia Youth Camp. Sold out the last two years.</p>
           <a href="https://checkout.square.site/merchant/MLV3JHGMZ7TYZ/checkout/GN4EN3BOFNGRGNIQCR4XMKP2" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Get Tickets &mdash; $42.50/person</a>
         </div>
       </div>
@@ -612,7 +603,7 @@
       <!-- Camping Trip -->
       <div class="event-full-card reveal reveal-delay-1">
         <div class="event-full-card__image">
-          <img src="./assets/camping-event.jpg" alt="Father and kids camping in the redwoods at Huddart Park" loading="lazy" width="640" height="360">
+          <img src="./assets/camping-event.jpg" alt="Father and kids camping at Huddart Park" loading="lazy" width="640" height="360">
         </div>
         <div class="event-full-card__body">
           <div class="event-full-card__eyebrow">Family Outdoor Adventure</div>
@@ -639,7 +630,7 @@
               $42.50 per person
             </li>
           </ul>
-          <p class="event-full-card__desc">An overnight adventure at a new location — Huddart Park in Woodside, surrounded by redwoods. Includes Saturday dinner, Sunday breakfast, s'mores, a kid-friendly ~2-mile hike, and prizes. Price is per person (dad + each child needs a ticket). Space is limited by campsite capacity.</p>
+          <p class="event-full-card__desc">An overnight adventure at a new location — Huddart Park (Sequoia Youth Camp) in Woodside. Includes Saturday dinner, Sunday breakfast, s'mores, a kid-friendly ~2-mile hike, and prizes. Price is per person (dad + each child needs a ticket). Space is limited by campsite capacity.</p>
           <a href="https://checkout.square.site/merchant/MLV3JHGMZ7TYZ/checkout/GN4EN3BOFNGRGNIQCR4XMKP2" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Purchase Tickets</a>
         </div>
       </div>
@@ -673,6 +664,90 @@
           <p class="event-full-card__desc">Our annual golf tournament and the Bulldog Dads' premiere fundraising event. Sponsorships from $500 to $25,000. Golf, dinner, prizes, and community — all for St. Isidore School.</p>
           <a href="#golf-classic" class="btn btn--primary">View Sponsorship Details</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENT PHOTOS ===== -->
+<section class="section section--navy" id="photos">
+  <div class="container">
+    <div class="section__header reveal">
+      <div class="section__eyebrow" style="color: var(--color-gold);">Community Moments</div>
+      <h2 class="section__title" style="color: var(--color-text-inverse);">Event Photos</h2>
+      <p class="section__desc" style="color: rgba(250, 249, 246, 0.7);">A look back at the events, outings, and moments that bring the Bulldog Dads community together.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="gallery-filters reveal" id="gallery-filters">
+      <button class="gallery-filter active" data-filter="all">All Events</button>
+      <button class="gallery-filter" data-filter="camping">Camping</button>
+      <button class="gallery-filter" data-filter="social">Social</button>
+      <button class="gallery-filter" data-filter="golf">Golf Outing</button>
+      <button class="gallery-filter" data-filter="bowling">Bowling</button>
+    </div>
+
+    <div class="gallery events-gallery reveal" id="events-gallery">
+      <!-- Camping Photos -->
+      <div class="gallery__item gallery__item--wide" data-category="camping">
+        <img src="./assets/events-gallery/event-15.jpg" alt="Large group photo of Bulldog Dads and kids at the annual camping trip" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="camping">
+        <img src="./assets/events-gallery/event-14.jpg" alt="Dads grilling burgers at the campsite with tents in the background" loading="lazy" width="900" height="1200">
+      </div>
+      <div class="gallery__item" data-category="camping">
+        <img src="./assets/events-gallery/event-18.jpg" alt="Dad starting the campfire with tents and picnic tables in the background" loading="lazy" width="554" height="1200">
+      </div>
+
+      <!-- Social / Dads Night -->
+      <div class="gallery__item gallery__item--wide" data-category="social">
+        <img src="./assets/events-gallery/event-17.jpg" alt="Bulldog Dads group photo at Norms Place for a night out" loading="lazy" width="1200" height="900">
+      </div>
+
+      <!-- Golf Outing Photos -->
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-04.jpg" alt="Blackhawk Country Club entrance with event banners on a blue-sky morning" loading="lazy" width="900" height="1200">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-05.jpg" alt="Foursome posing by the golf cart wearing matching green hats" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-06.jpg" alt="Foursome on the fairway with East Bay hills in the distance" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-07.jpg" alt="Torsap Thai Kitchen sponsor tent with team posing at the golf tournament" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-08.jpg" alt="Foursome with clubs ready on a sunny day at Blackhawk CC" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-09.jpg" alt="Foursome posing on the green at the SIS Golf Classic" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-10.jpg" alt="Golfers relaxing by the cart path between holes" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-11.jpg" alt="Foursome with sponsor signage on the tee box" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-12.jpg" alt="Golfers posing with Blackhawk hills backdrop" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-13.jpg" alt="Foursome on the course with East Bay views" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="gallery__item" data-category="golf">
+        <img src="./assets/events-gallery/event-16.jpg" alt="Golf Classic scoreboard showing team scores with Flagstar branding" loading="lazy" width="900" height="1200">
+      </div>
+
+      <!-- Bowling Photos -->
+      <div class="gallery__item" data-category="bowling">
+        <img src="./assets/events-gallery/event-01.jpg" alt="Kids having fun at the bowling lanes during family bowling night" loading="lazy" width="900" height="1200">
+      </div>
+      <div class="gallery__item" data-category="bowling">
+        <img src="./assets/events-gallery/event-02.jpg" alt="Two girls posing together at the bowling alley" loading="lazy" width="900" height="1200">
+      </div>
+      <div class="gallery__item" data-category="bowling">
+        <img src="./assets/events-gallery/event-03.jpg" alt="Kids smiling at the bowling event" loading="lazy" width="900" height="1200">
       </div>
     </div>
   </div>
@@ -879,13 +954,7 @@
     <div class="footer__top">
       <div class="footer__brand">
         <a href="#home" class="footer__logo">
-          <svg width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="2" width="40" height="40" rx="8" stroke="currentColor" stroke-width="2" fill="none"/>
-            <circle cx="17.5" cy="19" r="2" fill="currentColor"/>
-            <circle cx="26.5" cy="19" r="2" fill="currentColor"/>
-            <ellipse cx="22" cy="24" rx="4" ry="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M18 26.5c0 1.5 1.8 3 4 3s4-1.5 4-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg>
+          <img src="./assets/bulldog-dads-logo-sm.png" alt="SIS Bulldog Dads Logo" class="footer__logo-img" width="44" height="44">
           <span class="footer__logo-text">SIS Bulldog Dads</span>
         </a>
         <p class="footer__desc">A fathers' organization at St. Isidore Catholic School in Danville, California. Building community, raising funds, and creating lasting memories since our founding.</p>
@@ -896,6 +965,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#golf-classic">Golf Classic</a></li>
           <li><a href="#events">Events</a></li>
+          <li><a href="#photos">Photos</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
