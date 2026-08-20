@@ -1960,3 +1960,107 @@ h1, h2, h3, h4 {
   .members-grid { grid-template-columns: 1fr; }
   .stats-bar { grid-template-columns: 1fr; }
 }
+
+/* ===== BNY PRESENTING SPONSOR TREATMENT (2026) ===== */
+
+/* Homepage hero: presenting strip below CTAs */
+.hero__presenting {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(201, 168, 76, 0.55);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 420px;
+}
+.hero__presenting:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+.hero__presenting-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark, #8a6d1f);
+}
+.hero__presenting-logo {
+  display: block;
+  line-height: 0;
+}
+.hero__presenting-logo img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: 100%;
+}
+@media (max-width: 640px) {
+  .hero__presenting { max-width: 92%; padding: var(--space-3) var(--space-4); }
+  .hero__presenting-logo img { height: 36px; }
+}
+
+/* Golf tourney hero: pill with logo instead of text */
+.golf-hero__presenting--logo {
+  gap: var(--space-4);
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(201, 168, 76, 0.6);
+  color: var(--color-gold-dark, #8a6d1f);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-5);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.golf-hero__presenting--logo:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+.golf-hero__presenting-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark, #8a6d1f);
+}
+.golf-hero__presenting--logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+@media (max-width: 480px) {
+  .golf-hero__presenting--logo { flex-wrap: wrap; justify-content: center; text-align: center; }
+  .golf-hero__presenting--logo img { height: 24px; }
+}
+
+/* Presenting sponsor banner: logo card on dark navy */
+.presenting-banner__logo {
+  display: inline-block;
+  background: #ffffff;
+  padding: var(--space-5) var(--space-8);
+  border-radius: var(--radius-md);
+  margin: var(--space-2) 0 var(--space-4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+.presenting-banner__logo:hover { transform: translateY(-2px); }
+.presenting-banner__logo img {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+}
+.presenting-banner__name-full {
+  font-family: var(--font-body, inherit);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0;
+}
+@media (max-width: 640px) {
+  .presenting-banner__logo { padding: var(--space-4) var(--space-6); }
+  .presenting-banner__logo img { height: 52px; }
+}
