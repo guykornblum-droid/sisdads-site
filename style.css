@@ -2055,6 +2055,63 @@ h1, h2, h3, h4 {
 }
 /* Deprecated: BNY changed lockup to "BNY Wealth" in Aug 2026 */
 .presenting-banner__name-full { display: none; }
+
+/* Ken Kearns credit inside presenting banner */
+.presenting-banner__credit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: var(--space-2) auto var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(201, 168, 76, 0.35);
+  max-width: 420px;
+}
+.presenting-banner__credit-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+.presenting-banner__credit-title {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.9);
+}
+
+/* Sponsor block inside Presenting tier card */
+.tier-card__sponsor {
+  text-align: center;
+  padding-top: var(--space-3);
+  margin-top: var(--space-2);
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+}
+.tier-card__sponsor-name {
+  font-size: var(--text-sm);
+  color: var(--color-gold-dark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.tier-card__sponsor-credit {
+  font-size: var(--text-xs);
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+/* Ken credit under Presenting sponsor name in the wall */
+.sponsor-credit {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.85);
+  margin-top: var(--space-1);
+}
 @media (max-width: 640px) {
   .presenting-banner__logo { padding: var(--space-4) var(--space-6); }
   .presenting-banner__logo img { height: 44px; }
