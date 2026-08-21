@@ -1996,13 +1996,13 @@ h1, h2, h3, h4 {
 }
 .hero__presenting-logo img {
   display: block;
-  height: 44px;
+  height: 40px;
   width: auto;
   max-width: 100%;
 }
 @media (max-width: 640px) {
-  .hero__presenting { max-width: 92%; padding: var(--space-3) var(--space-4); }
-  .hero__presenting-logo img { height: 36px; }
+  .hero__presenting { max-width: 95%; padding: var(--space-3) var(--space-4); }
+  .hero__presenting-logo img { height: 30px; }
 }
 
 /* Golf tourney hero: pill with logo instead of text */
@@ -2028,12 +2028,12 @@ h1, h2, h3, h4 {
 }
 .golf-hero__presenting--logo img {
   display: block;
-  height: 28px;
+  height: 26px;
   width: auto;
 }
 @media (max-width: 480px) {
   .golf-hero__presenting--logo { flex-wrap: wrap; justify-content: center; text-align: center; }
-  .golf-hero__presenting--logo img { height: 24px; }
+  .golf-hero__presenting--logo img { height: 22px; }
 }
 
 /* Presenting sponsor banner: logo card on dark navy */
@@ -2049,18 +2049,13 @@ h1, h2, h3, h4 {
 .presenting-banner__logo:hover { transform: translateY(-2px); }
 .presenting-banner__logo img {
   display: block;
-  height: 72px;
+  height: 64px;
   width: auto;
   max-width: 100%;
 }
-.presenting-banner__name-full {
-  font-family: var(--font-body, inherit);
-  font-size: var(--text-lg);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0;
-}
+/* Deprecated: BNY changed lockup to "BNY Wealth" in Aug 2026 */
+.presenting-banner__name-full { display: none; }
 @media (max-width: 640px) {
   .presenting-banner__logo { padding: var(--space-4) var(--space-6); }
-  .presenting-banner__logo img { height: 52px; }
+  .presenting-banner__logo img { height: 44px; }
 }
