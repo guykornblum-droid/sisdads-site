@@ -333,21 +333,34 @@ h1, h2, h3, h4 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-bg);
+  height: auto;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+  max-height: calc(100vh - 72px);
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 100%);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   z-index: 99;
   padding: var(--space-8) var(--space-6);
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s, transform 0.3s;
+  visibility: hidden;
 }
 
 .mobile-nav.open {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
 }
+
+/* Lock body scroll when drawer is open (needs matching JS class, harmless otherwise) */
+body.nav-open { overflow: hidden; }
 
 .mobile-nav a {
   font-family: var(--font-display);
