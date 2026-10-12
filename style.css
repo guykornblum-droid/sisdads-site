@@ -2320,3 +2320,14 @@ body.nav-open { overflow: hidden; }
   .presenting-banner__logo { padding: var(--space-4) var(--space-6); }
   .presenting-banner__logo img { height: 44px; }
 }
+
+/* ===== 2026 GOLF ALBUM ===== */
+.album-hero { padding-top: calc(var(--space-16, 4rem) + 72px); }
+.album-back { display: inline-block; margin-bottom: var(--space-4); font-weight: 600; color: var(--color-green); text-decoration: none; }
+.album-back:hover { text-decoration: underline; }
+.gallery--album { grid-template-columns: repeat(4, 1fr); }
+.gallery--album .gallery__item, .gallery--golf26 .gallery__item { aspect-ratio: 3 / 2; }
+.album-note { margin-top: var(--space-8); text-align: center; font-size: 0.95rem; opacity: 0.8; }
+.golf26-cta { text-align: center; margin-top: var(--space-8); }
+@media (max-width: 1024px) { .gallery--album { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .gallery--album { grid-template-columns: repeat(2, 1fr); } }

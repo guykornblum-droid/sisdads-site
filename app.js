@@ -260,7 +260,7 @@
           visibleItems.forEach((vi, idx) => {
             const vImg = vi.querySelector('img');
             if (vImg) {
-              activeGalleryImages.push({ src: vImg.src, alt: vImg.alt });
+              activeGalleryImages.push({ src: vImg.dataset.full || vImg.currentSrc || vImg.src, alt: vImg.alt });
               if (vi === item) clickedIdx = idx;
             }
           });
@@ -329,6 +329,21 @@
       if (e.key === 'ArrowRight') nextImage();
       if (e.key === 'ArrowLeft') prevImage();
     });
+
+    // Swipe navigation (mobile)
+    let touchX = null, touchY = null;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      const dy = e.changedTouches[0].clientY - touchY;
+      touchX = touchY = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) nextImage(); else prevImage();
+      }
+    }, { passive: true });
   }
 
   // ===== EVENT PHOTOS FILTER =====
