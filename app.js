@@ -403,11 +403,18 @@
         body: JSON.stringify(Object.fromEntries(new FormData(form)))
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'Send failed');
+      const msg = String(data.message || '');
+      if (/activat/i.test(msg)) {
+        status.classList.add('is-ok');
+        status.textContent = 'Almost there. This form is being set up. Please email info@sisdads.com directly for now.';
+        return;
+      }
+      if (!res.ok || String(data.success) === 'false') throw new Error(msg || 'Send failed');
       form.reset();
       status.classList.add('is-ok');
       status.textContent = "Thanks. Your message is on its way and we'll get back to you soon.";
     } catch (err) {
+      console.warn('Contact form error:', err && err.message);
       status.classList.add('is-error');
       status.innerHTML = 'That didn\'t go through. Please email us at <a href="mailto:info@sisdads.com">info@sisdads.com</a>.';
     } finally {
