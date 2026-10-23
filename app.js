@@ -207,6 +207,19 @@
     storageSet(POPUP_DISMISS_KEY, Date.now().toString());
   }
 
+  // Buttons that open the mailing list popup on demand
+  document.querySelectorAll('[data-open-subscribe]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!popup) return;
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  if (popup) {
+    popup.querySelector('.subscribe-popup__close').addEventListener('click', closePopup);
+    popup.querySelector('.subscribe-popup__backdrop').addEventListener('click', closePopup);
+  }
+
   if (popup && shouldShowPopup()) {
     // Show after 8 seconds
     const popupTimer = setTimeout(showPopup, 8000);
@@ -222,9 +235,7 @@
     };
     window.addEventListener('scroll', scrollTrigger);
 
-    // Close handlers
-    popup.querySelector('.subscribe-popup__close').addEventListener('click', closePopup);
-    popup.querySelector('.subscribe-popup__backdrop').addEventListener('click', closePopup);
+    // Close handlers (click handlers bound above)
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
     });
@@ -371,4 +382,36 @@
     });
   }
 
+})();
+
+// ===== CONTACT FORM (FormSubmit -> info@sisdads.com) =====
+(function () {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = document.getElementById('contact-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (form._honey && form._honey.value) return;
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    status.className = 'contact-form__status';
+    status.textContent = '';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@sisdads.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'Send failed');
+      form.reset();
+      status.classList.add('is-ok');
+      status.textContent = "Thanks. Your message is on its way and we'll get back to you soon.";
+    } catch (err) {
+      status.classList.add('is-error');
+      status.innerHTML = 'That didn\'t go through. Please email us at <a href="mailto:info@sisdads.com">info@sisdads.com</a>.';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send Message';
+    }
+  });
 })();

@@ -2338,3 +2338,14 @@ body.nav-open { overflow: hidden; }
   .events-full > .event-full-card:only-child .event-full-card__image { height: auto; min-height: 100%; background: #f6f1e4; display: flex; align-items: center; justify-content: center; }
   .events-full > .event-full-card:only-child .event-full-card__image img { object-fit: contain; height: auto; max-height: 420px; padding: var(--space-4); }
 }
+
+/* Contact form status */
+.contact-form__status { margin-top: var(--space-3); font-size: 0.95rem; min-height: 1.2em; }
+.contact-form__status.is-ok { color: var(--color-green); font-weight: 600; }
+.contact-form__status.is-error { color: #b42318; }
+
+/* No upcoming events placeholder */
+.events-next { text-align: center; padding: var(--space-10, 2.5rem) var(--space-6); border: 1px dashed var(--color-divider); border-radius: var(--radius-lg); background: var(--color-surface); }
+.events-next__text { margin: 0 auto var(--space-5); max-width: 520px; font-size: 1.05rem; }
+.events-past { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px) { .events-past { grid-template-columns: 1fr; } }
