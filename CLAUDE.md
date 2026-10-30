@@ -129,7 +129,11 @@ Check the hero, the stats bar, the changed section, the mobile nav drawer and th
 | `sisdads.com` | A | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages) |
 | `www.sisdads.com` | CNAME | `guykornblum-droid.github.io.` |
 | `sisdads.com` | MX | `10 mx.hover.com.cust.b.hostedemail.com.` |
-| `sisdads.com` | TXT | **None.** No SPF, no DMARC, and no domain verification TXT. |
+| `sisdads.com` | TXT | `v=spf1 include:_spf.hostedemail.com ~all` (SPF, added Oct 30, 2026) |
+| `_dmarc.sisdads.com` | TXT | `v=DMARC1; p=none; rua=mailto:info@sisdads.com` (added Oct 30, 2026; keep only ONE `_dmarc` record) |
+| `k2._domainkey`, `k3._domainkey` | CNAME | `dkim2.mcsv.net`, `dkim3.mcsv.net` (Mailchimp DKIM, already set up) |
+| `mail.sisdads.com` | CNAME | `mail.hover.com.cust.b.hostedemail.com` |
+| `*.sisdads.com` | A | `216.40.34.41` (Hover default wildcard) |
 
 - **Records changed by Perplexity Computer:** none. DNS has always been managed by Guy directly in Hover.
 
@@ -413,7 +417,7 @@ Copied as given by Guy. Quotes are word for word. Items marked (paraphrase) are 
 2. **2026 Sponsor Recognition missing.** The site still shows "2025 Sponsor Recognition" (`index.html` ~line 394). Guy wants a 2026 section and 2025 archived. Needs the sponsor list from Guy (runbook 6.8).
 3. ~~Done Oct 30, 2026.~~ **Stale TLEg 2 link in the album footer.** `golf-2026.html` ~line 285 still links "TLEg 2 Tickets" to the Square product. `index.html` was fixed in `eb5dc0b`, but the album page was generated earlier. Replace it with "2026 Golf Classic Photos" or remove it.
 4. ~~Done Oct 30, 2026.~~ **Stale "2026" sponsorship mailto.** `index.html` ~line 564 uses subject `Sponsorship Inquiry - Golf Classic 2026`. Change it to 2027. (The golf hero "Sponsor 2027" button at ~line 243 is already correct.)
-5. **No SPF/DMARC TXT records** for `sisdads.com`. Mailchimp and Hover mail from `@sisdads.com` may land in spam. Guy would add these in Hover.
+5. ~~Done Oct 30, 2026.~~ SPF and DMARC added in Hover (see section 3). Mailchimp DKIM CNAMEs were already in place. A duplicate `_dmarc` record (`v=DMARC1; p=none;`) was flagged for deletion, since two DMARC records invalidate DMARC.
 6. **No analytics, sitemap, robots.txt, favicon, canonical or JSON-LD.** `index.html` has no og:image and its og:description is stale (section 7).
 7. **Old copy has em dashes**, e.g. the `<title>`/og:title, the merchandise line (~375), the contact intro (~984) and the "© 2026 SIS Bulldog Dads — St. Isidore" footer. Clean them up when touching those areas.
 8. ~~Done Oct 30, 2026.~~ SMS removed from both compliance pages; terms page is now plain mailing-list terms and no longer lists a phone number. Google Analytics lines removed from the privacy policy (Guy: no analytics wanted). Bret Scheiding's "SMS Marketing" committee title is an inside joke. Leave it.
