@@ -38,8 +38,9 @@ golf-2026.html             # 2026 Golf Classic photo album page (generated, then
 app.js                     # All JS: theme toggle, nav, scroll reveal, popup, gallery filters, lightbox, contact form
 style.css                  # Design tokens + components
 base.css                   # Reset + reduced-motion
-privacy-policy.html        # Compliance page (mentions Mailchimp email/SMS)
-terms-and-conditions.html  # "Messaging Terms & Conditions" compliance page
+privacy-policy.html        # Privacy policy (email only; SMS language removed Oct 30, 2026)
+terms-and-conditions.html  # Mailing list terms (email only; SMS language removed Oct 30, 2026)
+tools/build_album.py       # Album page builder (see runbook 6.5)
 email-preview.html         # Old reference email template ("Corrected Link, TLEg 2 Tickets"). Not linked from the site.
 assets/                    # All images (see section 5)
 ```
@@ -189,7 +190,8 @@ assets/
   bulldog-dads-logo.png, bulldog-dads-logo-sm.png   # club logo (never recolor)
   back-to-school-kickoff.jpg                         # Kickoff past-event card
   camping-event.jpg, dinner-event.jpg                # event cards
-  golf-detail.jpg, golf-hero.jpg (legacy, unused)    # golf section imagery
+  golf-detail.jpg                                    # golf section imagery
+  golf-hero.jpg                                      # HOME PAGE HERO background (index.html ~line 72). In use, do not delete.
   golf-classic-brochure-1.jpg, -2.jpg                # sponsor brochure pages
   tleg-dinner-menu.jpg                               # legacy TLEg menu art (unused)
   email/sis-golf-classic-logo.png                    # transparent logo for Mailchimp emails
@@ -269,7 +271,7 @@ Change all of these together:
 Trigger: Guy uploads originals to a Google Drive folder.
 1. Pull originals from Drive (Guy's personal account, read-only) into a scratch folder outside the repo. The old pull script downloaded in batches of ~30 because tokens expired mid-run.
 2. Resize with Pillow: `web/` 2000px long edge, JPEG q78, `exif_transpose` applied, metadata stripped. `thumb/` 640px, q72.
-3. Run an album builder (the original is reproduced in Appendix A; it lived only in the Perplexity sandbox). It dedupes by md5, renames to `golf-YYYY-NNN.jpg`, and generates `golf-YYYY.html` from `index.html`'s `<head>`, `<header>`, `<footer>` and lightbox. It rewrites in-page anchors to `./#section` and sets title, description and og:image. **Commit the builder into `tools/` this time.**
+3. Run `tools/build_album.py` (run with `-h` for options; Appendix A is the original 2026 version). It dedupes by md5, renames to `golf-YYYY-NNN.jpg`, and generates `golf-YYYY.html` from `index.html`'s `<head>`, `<header>`, `<footer>` and lightbox. It rewrites in-page anchors to `./#section` and sets title, description and og:image. **Commit the builder into `tools/` this time.**
 4. Send Guy 10–12 highlight candidates as a contact sheet. He picks or approves ("You pick, I'll review").
 5. Link the album from: the golf hero "See All Photos" button, the past event card, `#events-preview` and the footer link in both pages.
 6. Confirm the photographer credit with Guy before publishing.
@@ -322,7 +324,7 @@ See section 7.
 | Canonical tag | None (www vs apex both serve; GitHub redirects www) |
 | Favicon | None found |
 | Structured data (JSON-LD) | None |
-| Attribution meta | Lines 15–19 of both pages: `generator`/`author` = "Perplexity Computer", `og:see_also` and `rel="author"`, plus an ASCII-art HTML comment. Ask Guy whether to keep or remove these. |
+| Attribution meta | Removed Oct 30, 2026 per Guy (meta tags, ASCII comment and the visible footer link). Do not re-add. |
 | Google Search Console | Not set up as far as known |
 | Analytics | None installed |
 
@@ -407,17 +409,17 @@ Copied as given by Guy. Quotes are word for word. Items marked (paraphrase) are 
 
 ## 11. OPEN ITEMS AND KNOWN ISSUES
 
-1. **Photographer credit is live but unconfirmed.** `golf-2026.html` line ~97 says "Photos by Tanya House." Guy never explicitly confirmed the wording. Ask him.
+1. ~~Photographer credit~~ Confirmed by Guy Oct 30, 2026: keep "Photos by Tanya House."
 2. **2026 Sponsor Recognition missing.** The site still shows "2025 Sponsor Recognition" (`index.html` ~line 394). Guy wants a 2026 section and 2025 archived. Needs the sponsor list from Guy (runbook 6.8).
-3. **Stale TLEg 2 link in the album footer.** `golf-2026.html` ~line 285 still links "TLEg 2 Tickets" to the Square product. `index.html` was fixed in `eb5dc0b`, but the album page was generated earlier. Replace it with "2026 Golf Classic Photos" or remove it.
-4. **Stale "2026" sponsorship mailto.** `index.html` ~line 564 uses subject `Sponsorship Inquiry - Golf Classic 2026`. Change it to 2027. (The golf hero "Sponsor 2027" button at ~line 243 is already correct.)
+3. ~~Done Oct 30, 2026.~~ **Stale TLEg 2 link in the album footer.** `golf-2026.html` ~line 285 still links "TLEg 2 Tickets" to the Square product. `index.html` was fixed in `eb5dc0b`, but the album page was generated earlier. Replace it with "2026 Golf Classic Photos" or remove it.
+4. ~~Done Oct 30, 2026.~~ **Stale "2026" sponsorship mailto.** `index.html` ~line 564 uses subject `Sponsorship Inquiry - Golf Classic 2026`. Change it to 2027. (The golf hero "Sponsor 2027" button at ~line 243 is already correct.)
 5. **No SPF/DMARC TXT records** for `sisdads.com`. Mailchimp and Hover mail from `@sisdads.com` may land in spam. Guy would add these in Hover.
 6. **No analytics, sitemap, robots.txt, favicon, canonical or JSON-LD.** `index.html` has no og:image and its og:description is stale (section 7).
 7. **Old copy has em dashes**, e.g. the `<title>`/og:title, the merchandise line (~375), the contact intro (~984) and the "© 2026 SIS Bulldog Dads — St. Isidore" footer. Clean them up when touching those areas.
-8. **Compliance pages reference SMS**, but the SMS field was deleted from Mailchimp. Ask Guy whether to simplify `terms-and-conditions.html` ("Messaging Terms") and the privacy policy.
+8. ~~Done Oct 30, 2026.~~ SMS removed from both compliance pages; terms page is now plain mailing-list terms and no longer lists a phone number. Still open: the privacy policy says Google Analytics is used, but none is installed. Fix that line if analytics is not added. The committee card for Bret Scheiding still says "SMS Marketing" (his title, ask Guy).
 9. **Contact form:** delivery to `info@sisdads.com` should be confirmed with a test submission that Guy checks in the Hover mailbox. Optional: switch to a FormSubmit random alias to hide the address. The fallback state shows a mailto link.
 10. **Repo size**: ~83 MB album in git. Fine for now. Future albums add similar weight. Consider Git LFS or external hosting if it grows past ~500 MB.
-11. **Unused legacy assets**: `assets/golf-hero.jpg`, `assets/tleg-dinner-menu.jpg`, `email-preview.html`. Safe to remove after confirming nothing references them (`rg -n "golf-hero.jpg|tleg-dinner-menu|email-preview"`).
+11. **Unused legacy assets**: `assets/tleg-dinner-menu.jpg`, `email-preview.html`. (Not `golf-hero.jpg`, which is the home hero.) Safe to remove after confirming nothing references them (`rg -n "golf-hero.jpg|tleg-dinner-menu|email-preview"`).
 12. **Brand package out of date**: `brand/brand-package.md` (project files) still lists `$250K+` and `$125K 2026 Goal` and says Sold Out tiers always get Join Waitlist (Bulldog doesn't). Update it, or retire it in favor of `CLAUDE.md`.
 13. **Footer copyright year** is hard-coded "© 2026" in both pages. Update in January.
 14. **Headers and footers are duplicated** in `index.html` and `golf-2026.html`. Any nav or footer change must be made in both.
@@ -435,14 +437,16 @@ Things I could not verify or never had access to. Confirm with Guy.
 4. Square: admin access, which products are still live, and whether old event products should be archived.
 5. Whether any analytics, Search Console property or tag manager exists outside the site code (none is in the HTML).
 6. Who besides Guy has GitHub access to `sisdads-site`, and any branch protection (none was observed; pushes to `master` worked directly).
-7. Final confirmation of the photographer credit wording.
+7. ~~Photographer credit~~ Confirmed.
 8. The 2026 sponsor list by tier.
-9. Whether the "Perplexity Computer" attribution meta tags and comment should stay.
+9. ~~Perplexity attribution~~ Removed per Guy.
 10. Whether Guy has any Perplexity-side scheduled monitors related to the club (none touch this repo).
 
 ---
 
 ## Appendix A: Album builder (was `/home/user/workspace/sisdads/tools/build_album.py`)
+
+Superseded by `tools/build_album.py` in the repo, which takes the year, date, amount raised and credit as arguments. The original is kept here for reference.
 
 Paths are from the Perplexity sandbox. Adjust `SRC` and `REPO`, and generalize the `2026` strings, before reuse. Inputs: `SRC/web/*.jpg` (2000px) and `SRC/thumb/*.jpg` (640px) with matching filenames.
 
