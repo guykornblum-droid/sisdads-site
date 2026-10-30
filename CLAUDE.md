@@ -31,6 +31,8 @@ Verified live on Oct 30, 2026: GitHub Pages config (via `gh api`), DNS (via Goog
 
 ```
 CNAME                      # "sisdads.com". Do not delete or GitHub Pages drops the custom domain.
+_config.yml                # Keeps CLAUDE.md off the live site (exclude list). Keep it. Add any other private docs here.
+CLAUDE.md                  # This handoff. In the repo only, not served at sisdads.com.
 index.html                 # The whole main site, one page with anchors
 golf-2026.html             # 2026 Golf Classic photo album page (generated, then hand-edited)
 app.js                     # All JS: theme toggle, nav, scroll reveal, popup, gallery filters, lightbox, contact form
