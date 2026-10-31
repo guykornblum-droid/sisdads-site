@@ -413,7 +413,7 @@ Copied as given by Guy. Quotes are word for word. Items marked (paraphrase) are 
 
 ## 11. OPEN ITEMS AND KNOWN ISSUES
 
-1. ~~Photographer credit~~ Confirmed by Guy Oct 30, 2026: keep "Photos by Tanya House."
+1. ~~Photographer credit~~ Confirmed by Guy Oct 30, 2026: keep "Photos by Tanya House." Spelling is Tanya (the master spreadsheet says "Tonya," which is wrong).
 2. ~~Done Oct 31, 2026.~~ 2026 Sponsor Recognition is live (names by tier, from the master spreadsheet's "2026 Sponsors" tab, Committed rows only). 2025 is a collapsed `<details class="sponsor-archive">` below it. Logos are not used yet: the Drive folder "2026 Logos" (id `1XlYIN23wG0ZDU2jraKJr_QGWCbEwUP6J`) only had about 8. Guy's own entry shows as "The Kornblum Family". For 2027, move the 2026 wall into the archive the same way.
 3. ~~Done Oct 30, 2026.~~ **Stale TLEg 2 link in the album footer.** `golf-2026.html` ~line 285 still links "TLEg 2 Tickets" to the Square product. `index.html` was fixed in `eb5dc0b`, but the album page was generated earlier. Replace it with "2026 Golf Classic Photos" or remove it.
 4. ~~Done Oct 30, 2026.~~ **Stale "2026" sponsorship mailto.** `index.html` ~line 564 uses subject `Sponsorship Inquiry - Golf Classic 2026`. Change it to 2027. (The golf hero "Sponsor 2027" button at ~line 243 is already correct.)
