@@ -414,7 +414,7 @@ Copied as given by Guy. Quotes are word for word. Items marked (paraphrase) are 
 ## 11. OPEN ITEMS AND KNOWN ISSUES
 
 1. ~~Photographer credit~~ Confirmed by Guy Oct 30, 2026: keep "Photos by Tanya House."
-2. **2026 Sponsor Recognition missing.** The site still shows "2025 Sponsor Recognition" (`index.html` ~line 394). Guy wants a 2026 section and 2025 archived. Needs the sponsor list from Guy (runbook 6.8).
+2. ~~Done Oct 31, 2026.~~ 2026 Sponsor Recognition is live (names by tier, from the master spreadsheet's "2026 Sponsors" tab, Committed rows only). 2025 is a collapsed `<details class="sponsor-archive">` below it. Logos are not used yet: the Drive folder "2026 Logos" (id `1XlYIN23wG0ZDU2jraKJr_QGWCbEwUP6J`) only had about 8. Guy's own entry shows as "The Kornblum Family". For 2027, move the 2026 wall into the archive the same way.
 3. ~~Done Oct 30, 2026.~~ **Stale TLEg 2 link in the album footer.** `golf-2026.html` ~line 285 still links "TLEg 2 Tickets" to the Square product. `index.html` was fixed in `eb5dc0b`, but the album page was generated earlier. Replace it with "2026 Golf Classic Photos" or remove it.
 4. ~~Done Oct 30, 2026.~~ **Stale "2026" sponsorship mailto.** `index.html` ~line 564 uses subject `Sponsorship Inquiry - Golf Classic 2026`. Change it to 2027. (The golf hero "Sponsor 2027" button at ~line 243 is already correct.)
 5. ~~Done Oct 30, 2026.~~ SPF and DMARC added in Hover (see section 3). Mailchimp DKIM CNAMEs were already in place. A duplicate `_dmarc` record (`v=DMARC1; p=none;`) was deleted by Guy the same day. Never add a second `_dmarc` record.
@@ -442,7 +442,7 @@ Things I could not verify or never had access to. Confirm with Guy.
 5. Whether any analytics, Search Console property or tag manager exists outside the site code (none is in the HTML).
 6. Who besides Guy has GitHub access to `sisdads-site`, and any branch protection (none was observed; pushes to `master` worked directly).
 7. ~~Photographer credit~~ Confirmed.
-8. The 2026 sponsor list by tier.
+8. ~~2026 sponsor list~~ Received Oct 31, 2026.
 9. ~~Perplexity attribution~~ Removed per Guy.
 10. Whether Guy has any Perplexity-side scheduled monitors related to the club (none touch this repo).
 
